@@ -3,7 +3,7 @@
 
 [user]
 	name = {{ .git.name | default "hgsgtk" }}
-	email = {{ .git.email | default "hgsgtk@example.com" }}
+	email = {{ .git.email | default "kazuki@autify.com" }}
 
 [core]
 	editor = {{ .git.editor | default "vim" }}
@@ -12,6 +12,7 @@
 	quotepath = false
 	ignorecase = false
 	precomposeunicode = true
+	excludesfile = {{ .git.excludesfile | default "/Users/hgsgtk/.gitignore_global" }}
 
 [init]
 	defaultBranch = {{ .git.defaultBranch | default "main" }}
@@ -49,6 +50,7 @@
 	sw = switch
 	br = branch
 	ci = commit
+	see = browse
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	visual = !gitk
@@ -81,6 +83,12 @@
 [credential]
 	helper = cache --timeout=3600
 {{ end }}
+
+[ghq]
+	root = {{ .git.ghqRoot | default "~/go/src" }}
+
+[hub]
+	protocol = {{ .git.hubProtocol | default "ssh" }}
 
 [url "https://github.com/"]
 	insteadOf = git@github.com:

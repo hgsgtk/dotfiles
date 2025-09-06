@@ -9,6 +9,7 @@
 	quotepath = false
 	ignorecase = false
 	precomposeunicode = true
+	excludesfile = /Users/hgsgtk/.gitignore_global
 
 [init]
 	defaultBranch = main
@@ -46,6 +47,7 @@
 	sw = switch
 	br = branch
 	ci = commit
+	see = browse
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	visual = !gitk
@@ -70,6 +72,12 @@
 
 [credential]
 	helper = osxkeychain
+
+[ghq]
+	root = ~/go/src
+
+[hub]
+	protocol = ssh
 
 [url "https://github.com/"]
 	insteadOf = git@github.com:

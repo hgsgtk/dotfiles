@@ -3,13 +3,16 @@
 
 git:
   name: "hgsgtk"
-  email: "hgsgtk@example.com"
+  email: "hgsgtk@gmail.com"
   editor: "vim"
   autocrlf: "input"
   defaultBranch: "main"
   pullRebase: "false"
   mergeTool: "vimdiff"
   diffTool: "vimdiff"
+  excludesfile: "/Users/hgsgtk/.gitignore_global"
+  ghqRoot: "~/go/src"
+  hubProtocol: "ssh"
 
 # Machine-specific overrides can be added here
 # Example for work machine:
