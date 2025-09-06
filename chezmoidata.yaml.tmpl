@@ -1,0 +1,26 @@
+# chezmoi data file template for Git configuration
+# Copy this file to .chezmoidata.yaml and customize for your machine
+# This template is safe to commit to git
+
+os: "darwin"
+
+git:
+  name: "Your Name"
+  email: "your.email@example.com"
+  editor: "vim"
+  autocrlf: "input"
+  defaultBranch: "main"
+  pullRebase: "false"
+  mergeTool: "vimdiff"
+  diffTool: "vimdiff"
+  excludesfile: "/Users/yourusername/.gitignore_global"
+  ghqRoot: "~/go/src"
+  hubProtocol: "ssh"
+
+# Machine-specific overrides can be added here
+# Example for work machine:
+# git:
+#   name: "Your Work Name"
+#   email: "your.email@company.com"
+#   editor: "code"
+#   ghqRoot: "~/work/repos"

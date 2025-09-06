@@ -59,6 +59,14 @@ chezmoi apply
 
 This dotfiles repository includes a flexible Git configuration system that automatically adapts to different machines while allowing manual customization.
 
+### Avoiding Git Diffs
+
+To prevent `.chezmoidata.yaml` from causing git diffs between machines:
+
+1. **Use `.chezmoiignore`** (recommended): The `.chezmoiignore` file excludes `.chezmoidata.yaml` from git tracking
+2. **Use environment variables**: Set `GIT_USER_NAME` and `GIT_USER_EMAIL` environment variables
+3. **Use the template**: Copy `chezmoidata.yaml.tmpl` to `.chezmoidata.yaml` and customize
+
 ### Machine-Specific Customization
 
 To customize Git settings for a specific machine, edit `.chezmoidata.yaml`:
@@ -98,6 +106,18 @@ git:
   excludesfile: "/Users/dev/.config/git/ignore"
   ghqRoot: "~/development"
 ```
+
+### Using Environment Variables
+
+Instead of editing `.chezmoidata.yaml`, you can set environment variables:
+
+```bash
+# Set in your shell profile (~/.zshrc, ~/.bashrc, etc.)
+export GIT_USER_NAME="Your Name"
+export GIT_USER_EMAIL="your.email@example.com"
+```
+
+This approach works automatically without needing to edit any files.
 
 ## About chezmoi
 
