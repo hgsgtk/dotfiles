@@ -1,2 +1,72 @@
-# dotfile
-meta files and install application list for mac os pc setup
+# Dotfiles
+
+Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/) - a secure dotfile manager that handles configuration files across multiple machines.
+
+## What's included
+
+This repository contains configuration files and setup scripts for macOS development environment, including:
+
+- Shell configuration (zsh, bash)
+- Git configuration
+- Editor configurations
+- Application settings
+- Installation scripts for development tools
+
+## Quick Start
+
+### Install chezmoi and apply dotfiles
+
+On a new machine, install chezmoi and apply these dotfiles with a single command:
+
+```bash
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply hgsgtk
+```
+
+### Update dotfiles
+
+To update your dotfiles on any machine:
+
+```bash
+chezmoi update
+```
+
+## Manual Installation
+
+If you prefer to install chezmoi manually:
+
+```bash
+# Install chezmoi (choose your preferred method)
+# macOS with Homebrew:
+brew install chezmoi
+
+# Or download binary:
+curl -sfL https://git.io/chezmoi | sh
+
+# Initialize and apply dotfiles
+chezmoi init hgsgtk
+chezmoi apply
+```
+
+## Daily Usage
+
+- `chezmoi status` - Check status of your dotfiles
+- `chezmoi diff` - See what changes would be made
+- `chezmoi apply` - Apply changes to your dotfiles
+- `chezmoi edit <file>` - Edit a dotfile
+- `chezmoi add <file>` - Add a new file to be managed
+
+## About chezmoi
+
+chezmoi is a dotfile manager that provides:
+
+- **Templates** - Handle differences between machines
+- **Password manager support** - Store secrets securely
+- **File encryption** - Using gpg or age
+- **Script execution** - Handle complex setup tasks
+- **Cross-platform** - Works on Linux, macOS, and Windows
+
+For more information, visit [chezmoi.io](https://www.chezmoi.io/).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
