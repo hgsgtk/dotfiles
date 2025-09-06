@@ -1,0 +1,322 @@
+" ~/.vimrc: Vim configuration file
+
+" Enable modern Vim features
+set nocompatible
+
+" Enable file type detection and plugin loading
+filetype on
+filetype plugin on
+filetype indent on
+
+" Enable syntax highlighting
+syntax on
+
+" Set encoding
+set encoding=utf-8
+
+" Set line numbers
+set number
+set relativenumber
+
+" Set cursor line highlighting
+set cursorline
+
+" Set tab settings
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+
+" Set indentation
+set autoindent
+set smartindent
+set cindent
+
+" Set search settings
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Set backup and swap file settings
+set nobackup
+set noswapfile
+set nowritebackup
+
+" Set history
+set history=1000
+
+" Set command line completion
+set wildmenu
+set wildmode=list:longest,full
+
+" Set status line
+set laststatus=2
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+
+" Set ruler
+set ruler
+
+" Set show matching brackets
+set showmatch
+
+" Set wrap
+set wrap
+set linebreak
+
+" Set scroll offset
+set scrolloff=5
+
+" Set mouse support
+set mouse=a
+
+" Set clipboard
+set clipboard=unnamedplus
+
+" Set hidden buffers
+set hidden
+
+" Set split behavior
+set splitbelow
+set splitright
+
+" Set fold method
+set foldmethod=indent
+set foldlevel=99
+
+" Set list characters
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+
+" Set color scheme
+set background=dark
+colorscheme default
+
+" Key mappings
+let mapleader = " "
+
+" Clear search highlighting
+nnoremap <leader>h :nohlsearch<CR>
+
+" Save file
+nnoremap <leader>w :w<CR>
+
+" Quit
+nnoremap <leader>q :q<CR>
+
+" Save and quit
+nnoremap <leader>x :wq<CR>
+
+" Force quit
+nnoremap <leader>Q :q!<CR>
+
+" Toggle line numbers
+nnoremap <leader>n :set number!<CR>
+
+" Toggle relative line numbers
+nnoremap <leader>r :set relativenumber!<CR>
+
+" Toggle list characters
+nnoremap <leader>l :set list!<CR>
+
+" Toggle paste mode
+nnoremap <leader>p :set paste!<CR>
+
+" Move between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Resize windows
+nnoremap <C-Up> :resize +2<CR>
+nnoremap <C-Down> :resize -2<CR>
+nnoremap <C-Left> :vertical resize -2<CR>
+nnoremap <C-Right> :vertical resize +2<CR>
+
+" Move lines up/down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Duplicate line
+nnoremap <leader>d yyP
+
+" Delete line without yanking
+nnoremap <leader>dd dd
+
+" Yank to end of line
+nnoremap Y y$
+
+" Select all
+nnoremap <leader>a ggVG
+
+" Find and replace
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+" Toggle fold
+nnoremap <leader>f za
+
+" Open file explorer
+nnoremap <leader>e :Explore<CR>
+
+" Open terminal
+nnoremap <leader>t :terminal<CR>
+
+" Git commands
+nnoremap <leader>gs :!git status<CR>
+nnoremap <leader>ga :!git add .<CR>
+nnoremap <leader>gc :!git commit<CR>
+nnoremap <leader>gp :!git push<CR>
+nnoremap <leader>gl :!git pull<CR>
+
+" Auto commands
+augroup vimrc
+    autocmd!
+    
+    " Auto-save on focus lost
+    autocmd FocusLost * silent! wa
+    
+    " Auto-reload vimrc on save
+    autocmd BufWritePost ~/.vimrc source ~/.vimrc
+    
+    " Set file type specific settings
+    autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab
+    autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType html setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType css setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType json setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType go setlocal tabstop=4 shiftwidth=4 noexpandtab
+    autocmd FileType rust setlocal tabstop=4 shiftwidth=4 expandtab
+    autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
+    autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
+    
+    " Remove trailing whitespace on save
+    autocmd BufWritePre * :%s/\s\+$//e
+    
+    " Auto-comment new lines in comments
+    autocmd FileType * setlocal formatoptions+=r
+augroup END
+
+" Plugin management (using vim-plug)
+" Install vim-plug if not already installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Plugin list
+call plug#begin('~/.vim/plugged')
+
+" Essential plugins
+Plug 'tpope/vim-sensible'                    " Sensible defaults
+Plug 'tpope/vim-surround'                    " Surround text with quotes, brackets, etc.
+Plug 'tpope/vim-repeat'                      " Repeat plugin commands with .
+Plug 'tpope/vim-commentary'                 " Comment/uncomment lines
+Plug 'tpope/vim-fugitive'                   " Git integration
+Plug 'tpope/vim-rhubarb'                    " GitHub integration for fugitive
+
+" File navigation
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Syntax highlighting and language support
+Plug 'sheerun/vim-polyglot'                 " Language pack
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'rust-lang/rust.vim'
+
+" Status line and themes
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Code completion and LSP
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Indentation guides
+Plug 'Yggdroot/indentLine'
+
+" Git integration
+Plug 'airblade/vim-gitgutter'
+
+" Auto pairs
+Plug 'jiangmiao/auto-pairs'
+
+" Multiple cursors
+Plug 'mg979/vim-visual-multi'
+
+" NERDTree file explorer
+Plug 'preservim/nerdtree'
+
+call plug#end()
+
+" Plugin configurations
+
+" vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'dark'
+
+" fzf
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fg :Rg<CR>
+nnoremap <leader>fl :Lines<CR>
+
+" NERDTree
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
+
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" coc.nvim
+" Use tab for trigger completion with characters ahead and navigate
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+" GitGutter
+let g:gitgutter_enabled = 1
+let g:gitgutter_map_keys = 0
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
+" indentLine
+let g:indentLine_char = '│'
+let g:indentLine_enabled = 1
+
+" Load additional vim configuration if it exists
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
