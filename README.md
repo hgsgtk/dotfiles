@@ -59,14 +59,6 @@ chezmoi apply
 
 This dotfiles repository includes a flexible Git configuration system that automatically adapts to different machines while allowing manual customization.
 
-### Automatic Configuration
-
-The Git configuration uses chezmoi templating to automatically adapt to each machine:
-
-- **Username**: Automatically detected from the system
-- **Email**: Uses default from `.chezmoidata.yaml` or can be overridden
-- **excludesfile**: Automatically uses `/Users/{username}/.gitignore_global`
-
 ### Machine-Specific Customization
 
 To customize Git settings for a specific machine, edit `.chezmoidata.yaml`:

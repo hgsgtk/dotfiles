@@ -175,13 +175,13 @@ nnoremap <leader>gl :!git pull<CR>
 " Auto commands
 augroup vimrc
     autocmd!
-    
+
     " Auto-save on focus lost
     autocmd FocusLost * silent! wa
-    
+
     " Auto-reload vimrc on save
     autocmd BufWritePost ~/.vimrc source ~/.vimrc
-    
+
     " Set file type specific settings
     autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
@@ -195,10 +195,10 @@ augroup vimrc
     autocmd FileType rust setlocal tabstop=4 shiftwidth=4 expandtab
     autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
     autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
-    
+
     " Remove trailing whitespace on save
     autocmd BufWritePre * :%s/\s\+$//e
-    
+
     " Auto-comment new lines in comments
     autocmd FileType * setlocal formatoptions+=r
 augroup END
