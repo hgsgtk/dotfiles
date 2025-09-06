@@ -1,6 +1,8 @@
 # chezmoi data file for Git configuration
 # This file contains machine-specific Git settings
 
+os: "darwin"
+
 git:
   name: "hgsgtk"
   email: "hgsgtk@gmail.com"

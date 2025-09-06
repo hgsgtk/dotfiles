@@ -73,10 +73,10 @@
 [help]
 	autocorrect = 1
 
-{{ if eq .os "darwin" }}
+{{ if eq .chezmoi.os "darwin" }}
 [credential]
 	helper = osxkeychain
-{{ else if eq .os "windows" }}
+{{ else if eq .chezmoi.os "windows" }}
 [credential]
 	helper = manager-core
 {{ else }}
