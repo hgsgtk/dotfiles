@@ -73,32 +73,6 @@ git:
   hubProtocol: "https"  # or "ssh"
 ```
 
-### Popular ghq Root Directories
-
-The `ghq` tool manages repository cloning. Popular root directory choices:
-
-- `~/ghq` - Default
-- `~/src` - Clean and simple
-- `~/repos` - General repositories
-- `~/go/src` - Go development (current default)
-- `~/code` - Alternative clean option
-- `~/projects` - Descriptive organization
-
-### Git Aliases Included
-
-Useful Git aliases are pre-configured:
-
-- `st` = status
-- `co` = checkout (legacy)
-- `sw` = switch (modern)
-- `br` = branch
-- `ci` = commit
-- `see` = browse (opens repository in browser)
-- `lg` = pretty log graph
-- `uncommit` = undo last commit
-- `amend` = amend without editing
-- `cleanup` = delete merged branches
-
 ### Examples
 
 **Personal Machine:**
