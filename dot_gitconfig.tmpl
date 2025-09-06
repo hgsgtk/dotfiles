@@ -1,0 +1,89 @@
+# Git configuration template for machine-specific settings
+# This file will be processed by chezmoi to create machine-specific git configs
+
+[user]
+	name = {{ .git.name | default "hgsgtk" }}
+	email = {{ .git.email | default "hgsgtk@example.com" }}
+
+[core]
+	editor = {{ .git.editor | default "vim" }}
+	autocrlf = {{ .git.autocrlf | default "input" }}
+	safecrlf = true
+	quotepath = false
+	ignorecase = false
+	precomposeunicode = true
+
+[init]
+	defaultBranch = {{ .git.defaultBranch | default "main" }}
+
+[pull]
+	rebase = {{ .git.pullRebase | default "false" }}
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[fetch]
+	prune = true
+
+[rebase]
+	autoStash = true
+
+[merge]
+	tool = {{ .git.mergeTool | default "vimdiff" }}
+	conflictstyle = diff3
+
+[diff]
+	tool = {{ .git.diffTool | default "vimdiff" }}
+	colorMoved = zebra
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+
+[alias]
+	st = status
+	co = checkout
+	sw = switch
+	br = branch
+	ci = commit
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	visual = !gitk
+	lg = log --oneline --decorate --graph --all
+	lga = log --oneline --decorate --graph --all --stat
+	uncommit = reset --soft HEAD~1
+	amend = commit --amend --no-edit
+	wipe = !git add -A && git commit -m 'WIP' && git reset HEAD~1 --hard
+	cleanup = !git branch --merged | grep -v '\\*\\|main\\|develop' | xargs -n 1 git branch -d
+	remotes = remote -v
+	who = blame
+	what = show
+	when = log --pretty=format:'%h %ad %s' --date=short
+	why = log --pretty=format:'%h %ad %an %s' --date=short
+	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+
+[rerere]
+	enabled = true
+
+[help]
+	autocorrect = 1
+
+{{ if eq .os "darwin" }}
+[credential]
+	helper = osxkeychain
+{{ else if eq .os "windows" }}
+[credential]
+	helper = manager-core
+{{ else }}
+[credential]
+	helper = cache --timeout=3600
+{{ end }}
+
+[url "https://github.com/"]
+	insteadOf = git@github.com:
+
+[url "https://"]
+	insteadOf = git://

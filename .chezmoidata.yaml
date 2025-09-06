@@ -1,0 +1,19 @@
+# chezmoi data file for Git configuration
+# This file contains machine-specific Git settings
+
+git:
+  name: "hgsgtk"
+  email: "hgsgtk@example.com"
+  editor: "vim"
+  autocrlf: "input"
+  defaultBranch: "main"
+  pullRebase: "false"
+  mergeTool: "vimdiff"
+  diffTool: "vimdiff"
+
+# Machine-specific overrides can be added here
+# Example for work machine:
+# git:
+#   name: "Your Name"
+#   email: "your.email@company.com"
+#   editor: "code"
