@@ -82,6 +82,7 @@ plugins=(
   brew
   docker
   docker-compose
+  enhancd
   kubectl
   helm
   terraform
