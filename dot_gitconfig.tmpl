@@ -2,8 +2,8 @@
 # This file will be processed by chezmoi to create machine-specific git configs
 
 [user]
-	name = {{ .git.name | default "hgsgtk" }}
-	email = {{ .git.email | default "kazuki@autify.com" }}
+	name = {{ .git.name | default "username" }}
+	email = {{ .git.email | default "username@example.com" }}
 
 [core]
 	editor = {{ .git.editor | default "vim" }}
@@ -12,7 +12,7 @@
 	quotepath = false
 	ignorecase = false
 	precomposeunicode = true
-	excludesfile = {{ .git.excludesfile | default "/Users/hgsgtk/.gitignore_global" }}
+	excludesfile = {{ .git.excludesfile | default "/Users/username/.gitignore_global" }}
 
 [init]
 	defaultBranch = {{ .git.defaultBranch | default "main" }}

@@ -4,21 +4,14 @@
 os: "darwin"
 
 git:
-  name: "hgsgtk"
-  email: "hgsgtk@gmail.com"
+  name: "username"
+  email: "username@example.com"
   editor: "vim"
   autocrlf: "input"
   defaultBranch: "main"
   pullRebase: "false"
   mergeTool: "vimdiff"
   diffTool: "vimdiff"
-  excludesfile: "/Users/hgsgtk/.gitignore_global"
+  excludesfile: "/Users/username/.gitignore_global"
   ghqRoot: "~/go/src"
   hubProtocol: "ssh"
-
-# Machine-specific overrides can be added here
-# Example for work machine:
-# git:
-#   name: "Your Name"
-#   email: "your.email@company.com"
-#   editor: "code"

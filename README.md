@@ -61,7 +61,7 @@ This dotfiles repository includes a flexible Git configuration system that autom
 
 ### Machine-Specific Customization
 
-To customize Git settings for a specific machine, edit `.chezmoidata.yaml`:
+To customize Git settings for a specific machine, create `.chezmoidata.yaml` from `chezmoidata.yaml.sample`:
 
 ```yaml
 git:
@@ -71,32 +71,6 @@ git:
   excludesfile: "/Users/yourusername/.gitignore_global"
   ghqRoot: "~/src"  # or "~/repos", "~/code", etc.
   hubProtocol: "https"  # or "ssh"
-```
-
-### Examples
-
-**Personal Machine:**
-```yaml
-git:
-  name: "hgsgtk"
-  email: "hgsgtk@gmail.com"
-  ghqRoot: "~/go/src"
-```
-
-**Work Machine:**
-```yaml
-git:
-  name: "Your Name"
-  email: "your.email@company.com"
-  ghqRoot: "~/work/repos"
-  excludesfile: "/Users/workuser/.gitignore_work"
-```
-
-**Custom Setup:**
-```yaml
-git:
-  excludesfile: "/Users/dev/.config/git/ignore"
-  ghqRoot: "~/development"
 ```
 
 ## About chezmoi
