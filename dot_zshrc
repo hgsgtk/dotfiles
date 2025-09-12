@@ -101,6 +101,9 @@ source $ZSH/oh-my-zsh.sh
 # fzf shell integration
 source <(fzf --zsh)
 
+# fnm (Fast Node Manager) environment setup
+eval "$(fnm env --use-on-cd --shell zsh)"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
